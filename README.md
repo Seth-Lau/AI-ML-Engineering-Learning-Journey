@@ -1,6 +1,6 @@
 # AI / ML Engineering — Learning Journey
 
-Mechanical engineer (BEng, University of Warwick) transitioning into applied ML engineering. Currently at a London fresh pasta manufacturer, splitting my time between new product development and building an internal sales platform as its sole developer, while working toward junior Applied ML Engineer / Data Scientist roles.
+Mechanical engineer (BEng, University of Warwick) transitioning into applied ML engineering. Currently at a London food manufacturer, splitting my time between new product development and building an internal sales platform as its sole developer, while working toward junior Applied ML Engineer / Data Scientist roles.
 
 **Working principles:** portfolio over certificates · from-scratch before frameworks · ship real things
 
@@ -17,36 +17,27 @@ Mechanical engineer (BEng, University of Warwick) transitioning into applied ML 
 
 ## Projects
 
-### B2B prospecting platform *(active)*
+### B2B sales platform *(active, in production)*
 
-Internal web application for discovering, qualifying and contacting trade customers in the food service sector. Originally built by a previous developer; I took over the codebase and now own its development.
+Internal sales platform used daily by a commercial team. I inherited it from a previous developer in 2026 and now own its development, reliability and AI features. *Closed source; details kept deliberately general to respect confidentiality.*
 
-**Stack**
+**AI work**
+- **LLM tool-calling assistant:** connected an existing voice-input LLM feature to structured business data through tool calls (search → lookup), so answers come from validated source data rather than the model's memory. Validated against known-correct answers before release.
+- **Data controls for AI features:** admin-only data updates with staging, diff review and rollback; sensitive commercial fields excluded from the application database.
 
-| Layer | Technology |
-|---|---|
-| Frontend | Next.js 14 (App Router), TypeScript, Tailwind |
-| Mapping | Leaflet + OpenStreetMap — clustered geospatial search across ~135k UK venues |
-| Data source | Public food-safety venue dataset, refreshed daily via a scheduled GitHub Actions pipeline into object storage |
-| LLM layer | Anthropic Claude — filtering, record entry, email drafting, opportunity detection |
-| Database | PostgreSQL |
-| Integration | Business intelligence platform for live customer and sales data |
-| Auth | Role-based access control |
+**Engineering**
+- Ran a structured technical handover covering code, access, data and deployment
+- Moved the production database onto company-owned infrastructure and added automated daily backups, resolving a recurring availability issue
+- Built a scheduled data sync with defensive safeguards: no writes after a failed read, protection against unexpected data shrinkage, conflict reporting
+- Redesigned a management dashboard: restructured the layout, corrected query-level ranking errors, reduced queries per page load
+- Automated test suite and an isolated test environment containing no production data
+- AI-assisted development with guardrails: manual approval of agent actions, production credentials isolated from the coding agent
 
-**What I'm working on**
+**Skills used:** TypeScript · SQL · LLM tool calling · scheduled data pipelines · CI/CD · automated testing
 
-- [ ] **Look-alike lead ranking** — ranking the venue dataset by similarity to existing customer accounts across engineered features (venue type, hygiene rating, local density of comparable venues, proximity to existing accounts), replacing broad criteria filtering that currently returns high volume at low precision
-- [ ] **Geospatial lead discovery** — clustered map visualisation across a national venue dataset
-- [ ] **Evaluation harness** — question/known-answer pairs tracked over time, so changes to prompts and schema produce a measurable accuracy delta rather than a guess
-
-**Engineering and reliability**
-
-- [ ] Codebase read-through and documentation following handover
-- [ ] Test coverage and CI
-- [ ] Pipeline observability — refresh failure alerting and upstream schema drift detection
-- [ ] Production audit: failure modes, monitoring gaps, drift exposure
-
-*Closed source — internal company project*
+**Next**
+- [ ] Evaluation harness for the LLM assistant: known-answer test set, accuracy tracked per commit, regression gate in CI
+- [ ] Similarity-based lead ranking using engineered features, replacing broad rule-based filtering
 
 ### Time series forecasting *(active)*
 
@@ -72,35 +63,18 @@ Demand forecasting project applying the time series techniques below to real ope
 
 ### Next — MLOps sequence
 
-- [ ] **Duke — Python Essentials for MLOps** *(~3 weeks)* — packaging, testing, CLI tooling, project structure
-- [ ] **Duke — DevOps, DataOps, MLOps** *(~4 weeks)* — CI/CD, reproducibility, observability
 - [ ] **Duke — MLOps Tools: MLflow and Hugging Face** *(~3 weeks)* — experiment tracking and model registry, run against real forecasting experiments rather than course datasets
-- [ ] **Duke — MLOps Platforms: SageMaker and Azure ML** *(~4 weeks)* — cloud deployment, SageMaker prioritised
-
-### Later
-
-- [ ] PyTorch
-- [ ] Hugging Face ecosystem
-- [ ] LoRA / QLoRA fine-tuning
-- [ ] fast.ai — Practical Deep Learning for Coders
-- [ ] Karpathy — Neural Networks: Zero to Hero
-- [ ] AWS certification path: AI Practitioner → ML Engineer Associate → Generative AI Developer Professional
 
 ---
 
 ## Tools
-
-**Development** VS Code · Claude Code · Jupyter
-**Version control** Git · GitHub · GitHub Actions
-**Python** pandas · NumPy · scikit-learn · sqlite3
-**Web** TypeScript · Next.js · Tailwind · Leaflet
-**Data** SQL · PostgreSQL · SQLite
+Python, SQL, TypeScript, Git and scikit-learn.
 
 ---
 
 ## Background
 
-New product developer, responsible for the full NPD cycle from concept through to approved production spec. Approved product development for a major UK retailer and for restaurant groups including Gordon Ramsay Restaurants and the Marco Pierre White group; menu design for a high end independent London restaurant.
+New product developer, responsible for the full NPD cycle from concept through to approved production spec. Approved product development for major UK retailers and restaurant groups; menu creation for a high end independent London restaurant.
 
 The relevance to ML work is direct: demand forecasting, yield and waste reduction, and process optimisation are problems I have worked on from the operations side before approaching them as modelling problems.
 
